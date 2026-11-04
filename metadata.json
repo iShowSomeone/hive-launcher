@@ -1,0 +1,17 @@
+{
+  "uuid": "hive-launcher@ishowsomeone.github.io",
+  "name": "Hive Launcher",
+  "description": "A honeycomb app launcher for GNOME Shell.\n\nTiles sit on a honeycomb or square lattice under a fisheye lens. Drag or scroll to pan, use only the keyboard (F1 lists every key), or just type to search. Right-click a tile for windows, favourites, details and hide. Optional folders (by category, from GNOME's app folders, or your own layout arranged by drag and drop), a centre tile that can show a clock, system load, battery or the playing track, many tile shapes, themes and presets, and optional liquid-glass tiles.\n\nToggle with Super+Shift+A (configurable in the preferences) or the panel icon.\n\nPrivacy: no network access and no telemetry. The extension reads your app list and settings, and system figures from /proc and /sys (load, memory, battery, pressure) to adapt its animation quality. The performance log is off by default and only writes a text file to ~/.cache/hive-launcher.",
+  "shell-version": [
+    "45",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50",
+    "51"
+  ],
+  "url": "https://github.com/iShowSomeone/hive-launcher",
+  "settings-schema": "org.gnome.shell.extensions.hive-launcher",
+  "version-name": "1"
+}

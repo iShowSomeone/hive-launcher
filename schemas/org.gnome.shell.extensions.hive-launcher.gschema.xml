@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.hive-launcher"
+          path="/org/gnome/shell/extensions/hive-launcher/">
+
+    <key name="toggle-hive" type="as">
+      <default>['&lt;Super&gt;&lt;Shift&gt;a']</default>
+      <summary>Keyboard shortcut that toggles the Hive</summary>
+    </key>
+
+    <key name="show-panel-icon" type="b">
+      <default>true</default>
+      <summary>Show a launcher button in the top panel</summary>
+    </key>
+
+    <key name="sort-mode" type="s">
+      <choices>
+        <choice value="frequency"/>
+        <choice value="name"/>
+        <choice value="favorites"/>
+        <choice value="recent"/>
+      </choices>
+      <default>'frequency'</default>
+      <summary>Ordering of apps (most important ones sit closest to the centre)</summary>
+    </key>
+
+    <key name="hidden-apps" type="as">
+      <default>[]</default>
+      <summary>Desktop-file IDs hidden from the Hive</summary>
+    </key>
+
+    <key name="group-mode" type="s">
+      <choices>
+        <choice value="none"/>
+        <choice value="categories"/>
+        <choice value="gnome"/>
+        <choice value="custom"/>
+      </choices>
+      <default>'none'</default>
+      <summary>Group apps into folder tiles: off, by freedesktop category, using the GNOME app folders, or your own custom layout</summary>
+    </key>
+
+    <key name="custom-policy" type="s">
+      <choices>
+        <choice value="packed"/>
+        <choice value="free"/>
+      </choices>
+      <default>'packed'</default>
+      <summary>Custom layout: packed keeps the lattice free of gaps, free lets you leave gaps</summary>
+    </key>
+
+    <key name="custom-layout" type="s">
+      <default>''</default>
+      <summary>Your custom layout (JSON, written by the Hive itself; empty = none yet)</summary>
+    </key>
+
+    <key name="recent-apps" type="as">
+      <default>[]</default>
+      <summary>Desktop-file IDs of recently opened apps, most recent first (used by the "Recently opened" order)</summary>
+    </key>
+
+    <key name="show-running" type="b">
+      <default>true</default>
+      <summary>Glow the cells of running apps</summary>
+    </key>
+
+    <key name="snap" type="b">
+      <default>true</default>
+      <summary>Magnetise to the nearest hexagon after panning</summary>
+    </key>
+
+    <key name="blur" type="b">
+      <default>true</default>
+      <summary>Blur the desktop behind the Hive</summary>
+    </key>
+
+    <key name="blur-strength" type="d">
+      <range min="5" max="80"/>
+      <default>30</default>
+      <summary>Blur radius</summary>
+    </key>
+
+    <key name="backdrop-opacity" type="d">
+      <range min="0.2" max="1.0"/>
+      <default>0.62</default>
+      <summary>Opacity of the tint over the desktop</summary>
+    </key>
+
+    <key name="zoom" type="d">
+      <range min="0.5" max="1.8"/>
+      <default>1.0</default>
+      <summary>Fisheye radius multiplier (larger = flatter lens)</summary>
+    </key>
+
+    <key name="min-scale" type="d">
+      <range min="0.12" max="1.0"/>
+      <default>0.3</default>
+      <summary>Smallest relative tile size at the rim (1.0 disables the fisheye)</summary>
+    </key>
+
+    <key name="shape" type="s">
+      <choices>
+        <choice value="hexagon"/>
+        <choice value="circle"/>
+        <choice value="rounded"/>
+        <choice value="squircle"/>
+        <choice value="diamond"/>
+        <choice value="octagon"/>
+      </choices>
+      <default>'hexagon'</default>
+      <summary>Tile shape</summary>
+    </key>
+
+    <key name="layout" type="s">
+      <choices>
+        <choice value="honeycomb"/>
+        <choice value="grid"/>
+      </choices>
+      <default>'honeycomb'</default>
+      <summary>Arrangement of the tiles</summary>
+    </key>
+
+    <key name="tile-size" type="d">
+      <range min="0.6" max="1.5"/>
+      <default>1.0</default>
+      <summary>Tile size multiplier</summary>
+    </key>
+
+    <key name="tile-gap" type="d">
+      <range min="0" max="20"/>
+      <default>5</default>
+      <summary>Gap between tiles in pixels</summary>
+    </key>
+
+    <key name="icon-scale" type="d">
+      <range min="0.6" max="1.5"/>
+      <default>1.0</default>
+      <summary>Icon size multiplier</summary>
+    </key>
+
+    <key name="labels" type="s">
+      <choices>
+        <choice value="auto"/>
+        <choice value="hover"/>
+        <choice value="none"/>
+      </choices>
+      <default>'auto'</default>
+      <summary>When to show app names</summary>
+    </key>
+
+    <key name="logo-style" type="s">
+      <choices>
+        <choice value="ring"/>
+        <choice value="hive"/>
+        <choice value="clock"/>
+      </choices>
+      <default>'ring'</default>
+      <summary>Glyph on the centre tile</summary>
+    </key>
+
+    <key name="show-empty" type="b">
+      <default>true</default>
+      <summary>Draw empty decorative tiles around the apps</summary>
+    </key>
+
+    <key name="show-hints" type="b">
+      <default>true</default>
+      <summary>Show the hint line at the bottom</summary>
+    </key>
+
+    <key name="animations" type="b">
+      <default>true</default>
+      <summary>Animate opening and closing</summary>
+    </key>
+
+    <key name="theme" type="s">
+      <choices>
+        <choice value="tokyo"/>
+        <choice value="honey"/>
+        <choice value="catppuccin"/>
+        <choice value="nord"/>
+        <choice value="gruvbox"/>
+        <choice value="rose"/>
+        <choice value="emerald"/>
+        <choice value="mono"/>
+        <choice value="light"/>
+      </choices>
+      <default>'honey'</default>
+      <summary>Colour theme</summary>
+    </key>
+
+    <key name="accent-color" type="s">
+      <default>''</default>
+      <summary>Custom accent colour as #rrggbb (empty = use the theme's)</summary>
+    </key>
+
+    <key name="use-system-accent" type="b">
+      <default>false</default>
+      <summary>Use GNOME's accent colour (GNOME 47+)</summary>
+    </key>
+    <key name="tile-style" type="s">
+      <choices>
+        <choice value="gradient"/>
+        <choice value="solid"/>
+        <choice value="glass"/>
+        <choice value="liquid"/>
+        <choice value="neon"/>
+        <choice value="soft"/>
+        <choice value="holo"/>
+        <choice value="outline"/>
+        <choice value="accent"/>
+        <choice value="brackets"/>
+      </choices>
+      <default>'gradient'</default>
+      <summary>Tile background style</summary>
+    </key>
+
+    <key name="tile-opacity" type="d">
+      <range min="0.05" max="1.0"/>
+      <default>0.85</default>
+      <summary>Tile background opacity</summary>
+    </key>
+
+    <key name="tile-color" type="s">
+      <default>''</default>
+      <summary>Custom tile background colour as #rrggbb (empty = theme)</summary>
+    </key>
+
+    <key name="tile-sheen" type="b">
+      <default>true</default>
+      <summary>Glossy highlight on the top of tiles</summary>
+    </key>
+
+    <key name="hover-effect" type="s">
+      <choices>
+        <choice value="glow"/>
+        <choice value="fill"/>
+        <choice value="shine"/>
+        <choice value="none"/>
+        <choice value="invert"/>
+      </choices>
+      <default>'glow'</default>
+      <summary>Effect on the hovered tile</summary>
+    </key>
+
+    <key name="hover-scale" type="d">
+      <range min="1.0" max="1.4"/>
+      <default>1.16</default>
+      <summary>How much the hovered tile grows</summary>
+    </key>
+
+    <key name="corner-roundness" type="d">
+      <range min="0.05" max="1.0"/>
+      <default>0.42</default>
+      <summary>Corner roundness of the rounded-square shape</summary>
+    </key>
+
+    <key name="running-style" type="s">
+      <choices>
+        <choice value="both"/>
+        <choice value="dot"/>
+        <choice value="glow"/>
+        <choice value="none"/>
+      </choices>
+      <default>'both'</default>
+      <summary>Indicator for running apps</summary>
+    </key>
+
+    <key name="border-width" type="d">
+      <range min="0" max="6"/>
+      <default>2</default>
+      <summary>Tile border width</summary>
+    </key>
+
+    <key name="border-style" type="s">
+      <choices>
+        <choice value="solid"/>
+        <choice value="dashed"/>
+        <choice value="dotted"/>
+        <choice value="double"/>
+      </choices>
+      <default>'solid'</default>
+      <summary>Tile border style</summary>
+    </key>
+
+    <key name="border-mode" type="s">
+      <choices>
+        <choice value="accent"/>
+        <choice value="custom"/>
+        <choice value="rainbow"/>
+      </choices>
+      <default>'accent'</default>
+      <summary>Tile border colour source</summary>
+    </key>
+
+    <key name="border-color" type="s">
+      <default>''</default>
+      <summary>Custom border colour as #rrggbb</summary>
+    </key>
+
+    <key name="border-opacity" type="d">
+      <range min="0" max="1.0"/>
+      <default>0.45</default>
+      <summary>Base border opacity</summary>
+    </key>
+
+    <key name="label-size" type="d">
+      <range min="0.7" max="1.6"/>
+      <default>1.0</default>
+      <summary>App name text size multiplier</summary>
+    </key>
+
+    <key name="show-vignette" type="b">
+      <default>true</default>
+      <summary>Soft vignette and glow behind the tiles</summary>
+    </key>
+
+    <key name="open-animation" type="s">
+      <choices>
+        <choice value="pop"/>
+        <choice value="fade"/>
+        <choice value="rise"/>
+        <choice value="spin"/>
+        <choice value="zoom"/>
+        <choice value="spring"/>
+        <choice value="cascade"/>
+        <choice value="flip"/>
+        <choice value="converge"/>
+        <choice value="materialize"/>
+      </choices>
+      <default>'pop'</default>
+      <summary>Opening animation</summary>
+    </key>
+
+    <key name="launch-animation" type="b">
+      <default>true</default>
+      <summary>Zoom the launched tile while closing</summary>
+    </key>
+
+    <key name="ambient-animation" type="s">
+      <choices>
+        <choice value="none"/>
+        <choice value="float"/>
+        <choice value="pulse"/>
+        <choice value="both"/>
+        <choice value="breathe"/>
+        <choice value="wave"/>
+      </choices>
+      <default>'float'</default>
+      <summary>Continuous idle animation</summary>
+    </key>
+
+    <key name="menu-animation" type="b">
+      <default>true</default>
+      <summary>Animate the context menu</summary>
+    </key>
+    <key name="inertia" type="d">
+      <range min="0" max="2"/>
+      <default>1.0</default>
+      <summary>How far the grid keeps gliding after a drag (0 = stops dead)</summary>
+    </key>
+
+    <key name="scroll-speed" type="d">
+      <range min="0.3" max="3"/>
+      <default>1.0</default>
+      <summary>Scroll-wheel panning speed</summary>
+    </key>
+
+    <key name="middle-click-new-window" type="b">
+      <default>true</default>
+      <summary>Middle-click a tile to open a new window</summary>
+    </key>
+
+    <key name="backdrop-color" type="s">
+      <default>''</default>
+      <summary>Custom backdrop tint as #rrggbb (empty = theme)</summary>
+    </key>
+
+    <key name="search-width" type="d">
+      <range min="240" max="640"/>
+      <default>380</default>
+      <summary>Width of the search bar</summary>
+    </key>
+
+    <key name="search-position" type="s">
+      <choices>
+        <choice value="top"/>
+        <choice value="bottom"/>
+      </choices>
+      <default>'top'</default>
+      <summary>Where the search bar sits</summary>
+    </key>
+    <key name="preview-request" type="u">
+      <default>0</default>
+      <summary>Incremented by the preferences window to ask the shell to open the Hive</summary>
+    </key>
+    <!-- Edit Hive tuning (1.9) -->
+    <key name="edit-wobble" type="d">
+      <range min="0.0" max="3.0"/>
+      <default>1.3</default>
+      <summary>Edit mode: how far tiles wobble, in degrees (0 = no wobble)</summary>
+    </key>
+    <key name="edit-wobble-speed" type="d">
+      <range min="0.4" max="2.5"/>
+      <default>1.0</default>
+      <summary>Edit mode: wobble speed (1 = normal)</summary>
+    </key>
+    <key name="edit-dwell-ms" type="i">
+      <range min="150" max="1500"/>
+      <default>400</default>
+      <summary>Edit mode: how long (ms) a dragged app must hover over another app to make a folder</summary>
+    </key>
+    <key name="edit-long-press-ms" type="i">
+      <range min="150" max="1200"/>
+      <default>350</default>
+      <summary>Edit mode: how long (ms) a tile must be held still to be lifted (touch)</summary>
+    </key>
+    <key name="edit-lift-distance" type="d">
+      <range min="2.0" max="30.0"/>
+      <default>6.0</default>
+      <summary>Edit mode: how far (px) the pointer must move on a tile before it is lifted</summary>
+    </key>
+    <key name="edit-hit-radius" type="d">
+      <range min="0.3" max="1.0"/>
+      <default>0.55</default>
+      <summary>Edit mode: drop-target size as a fraction of the tile (smaller = more precise)</summary>
+    </key>
+    <key name="edit-autopan" type="d">
+      <range min="0.0" max="3.0"/>
+      <default>1.0</default>
+      <summary>Edit mode: speed of the automatic panning near the screen edge (0 = off)</summary>
+    </key>
+    <key name="edit-lift-scale" type="d">
+      <range min="1.0" max="1.5"/>
+      <default>1.1</default>
+      <summary>Edit mode: how much larger a lifted tile is drawn</summary>
+    </key>
+    <key name="edit-lift-opacity" type="d">
+      <range min="0.3" max="1.0"/>
+      <default>0.88</default>
+      <summary>Edit mode: opacity of a lifted tile</summary>
+    </key>
+    <key name="edit-free-rings" type="i">
+      <range min="0" max="4"/>
+      <default>2</default>
+      <summary>Edit mode (Free arrangement): extra rings of empty slots shown around the outermost tile</summary>
+    </key>
+    <key name="edit-keep-empty" type="b">
+      <default>false</default>
+      <summary>Custom layout: keep the decorative empty tiles after editing (otherwise they only show while editing)</summary>
+    </key>
+    <key name="edit-ask-name" type="b">
+      <default>true</default>
+      <summary>Ask for a name straight away when a drop makes a new folder</summary>
+    </key>
+
+    <!-- Performance log (1.9) -->
+    <key name="perf-log" type="b">
+      <default>false</default>
+      <summary>Record frame timings and timings of the Hive's own work to a log file in the cache folder</summary>
+    </key>
+
+    <key name="edit-request" type="u">
+      <default>0</default>
+      <summary>Incremented by the preferences window to ask the shell to open the Hive in layout-editing mode</summary>
+    </key>
+    <key name="tile-shadow" type="d">
+      <range min="0" max="1"/>
+      <default>0</default>
+      <summary>Soft drop shadow under tiles</summary>
+    </key>
+
+    <key name="chrome-style" type="s">
+      <choices>
+        <choice value="solid"/>
+        <choice value="glass"/>
+      </choices>
+      <default>'solid'</default>
+      <summary>Look of the search bar and context menu</summary>
+    </key>
+
+    <key name="glass-light" type="s">
+      <choices>
+        <choice value="fixed"/>
+        <choice value="follow"/>
+      </choices>
+      <default>'fixed'</default>
+      <summary>Liquid glass lighting: fixed, or following the pointer</summary>
+    </key>
+
+    <key name="hover-style" type="s">
+      <choices>
+        <choice value="grow"/>
+        <choice value="bounce"/>
+        <choice value="tilt"/>
+      </choices>
+      <default>'grow'</default>
+      <summary>How tiles react to hover</summary>
+    </key>
+
+    <key name="press-feedback" type="b">
+      <default>true</default>
+      <summary>Tiles squish slightly while pressed</summary>
+    </key>
+
+    <key name="animation-speed" type="d">
+      <range min="0.4" max="2.5"/>
+      <default>1.0</default>
+      <summary>Speed multiplier for opening and closing</summary>
+    </key>
+    <key name="glass-refraction" type="b">
+      <default>false</default>
+      <summary>Liquid glass: refract the desktop through the tiles (GPU shader)</summary>
+    </key>
+
+    <key name="refraction-strength" type="d">
+      <range min="0" max="30"/>
+      <default>16</default>
+      <summary>How strongly the glass bends the image at its edges (pixels)</summary>
+    </key>
+
+    <key name="refraction-frost" type="d">
+      <range min="0" max="12"/>
+      <default>1.5</default>
+      <summary>Frosting (blur) inside the glass (pixels)</summary>
+    </key>
+
+    <key name="refraction-chroma" type="d">
+      <range min="0" max="6"/>
+      <default>1</default>
+      <summary>Colour fringing at the glass edge (pixels)</summary>
+    </key>
+
+    <key name="refraction-vibrance" type="d">
+      <range min="0.8" max="1.8"/>
+      <default>1.2</default>
+      <summary>Saturation of the refracted image</summary>
+    </key>
+    <key name="refraction-edge" type="d">
+      <range min="0.2" max="0.8"/>
+      <default>0.5</default>
+      <summary>Width of the lensing band at the glass edge (fraction of the tile radius)</summary>
+    </key>
+
+    <key name="glass-rim" type="d">
+      <range min="0" max="1"/>
+      <default>0.35</default>
+      <summary>Liquid glass: strength of the thin specular rim line</summary>
+    </key>
+
+    <key name="glass-gloss" type="d">
+      <range min="0" max="1"/>
+      <default>0.3</default>
+      <summary>Liquid glass: soft light gathered along the edge</summary>
+    </key>
+
+    <key name="glass-depth" type="d">
+      <range min="0" max="1"/>
+      <default>0.4</default>
+      <summary>Liquid glass: shading on the far side of the slab</summary>
+    </key>
+
+    <key name="glass-angle" type="d">
+      <range min="-180" max="180"/>
+      <default>-124</default>
+      <summary>Liquid glass: direction of the light, in degrees</summary>
+    </key>
+
+    <key name="center-widget" type="s">
+      <choices>
+        <choice value="logo"/>
+        <choice value="clock"/>
+        <choice value="analog"/>
+        <choice value="calendar"/>
+        <choice value="system"/>
+        <choice value="battery"/>
+        <choice value="media"/>
+      </choices>
+      <default>'logo'</default>
+      <summary>What the centre tile shows</summary>
+    </key>
+
+    <key name="clock-24h" type="b">
+      <default>true</default>
+      <summary>Use a 24-hour clock in the centre-tile widgets</summary>
+    </key>
+
+    <key name="replace-app-grid" type="b">
+      <default>false</default>
+      <summary>Open the Hive instead of GNOME's application grid (dock Show Applications button, Super+A)</summary>
+    </key>
+
+    <!-- 1.10: look details (each independent of the presets) -->
+    <key name="icon-tint" type="s">
+      <choices>
+        <choice value="original"/>
+        <choice value="mono"/>
+        <choice value="accent"/>
+        <choice value="custom"/>
+      </choices>
+      <default>'original'</default>
+      <summary>How app icons are coloured: untouched, greyscale, tinted with the accent, or tinted with a custom colour</summary>
+    </key>
+
+    <key name="icon-tint-color" type="s">
+      <default>''</default>
+      <summary>Colour for the "custom" icon tint (#rrggbb; empty = the accent colour)</summary>
+    </key>
+
+    <key name="icon-tint-strength" type="d">
+      <range min="0.0" max="1.0"/>
+      <default>1.0</default>
+      <summary>How strongly the tint colours the icons (0 = plain grey)</summary>
+    </key>
+
+    <key name="center-style" type="s">
+      <choices>
+        <choice value="filled"/>
+        <choice value="outline"/>
+        <choice value="transparent"/>
+      </choices>
+      <default>'filled'</default>
+      <summary>Centre tile: solid accent slab, outline only, or no tile at all</summary>
+    </key>
+
+    <key name="label-font" type="s">
+      <choices>
+        <choice value="default"/>
+        <choice value="monospace"/>
+      </choices>
+      <default>'default'</default>
+      <summary>Font of the app names</summary>
+    </key>
+
+    <key name="label-case" type="s">
+      <choices>
+        <choice value="normal"/>
+        <choice value="upper"/>
+      </choices>
+      <default>'normal'</default>
+      <summary>Capitalisation of the app names</summary>
+    </key>
+
+    <key name="label-glow" type="d">
+      <range min="0.0" max="1.0"/>
+      <default>0.0</default>
+      <summary>Soft glow around the app names in the accent colour (0 = off)</summary>
+    </key>
+
+    <key name="backdrop-pattern" type="s">
+      <choices>
+        <choice value="none"/>
+        <choice value="grid-paper"/>
+        <choice value="scanlines"/>
+        <choice value="dots"/>
+      </choices>
+      <default>'none'</default>
+      <summary>Pattern drawn once behind the tiles</summary>
+    </key>
+
+    <key name="pattern-opacity" type="d">
+      <range min="0.02" max="0.6"/>
+      <default>0.12</default>
+      <summary>Strength of the backdrop pattern</summary>
+    </key>
+
+    <key name="pattern-spacing" type="d">
+      <range min="2.0" max="80.0"/>
+      <default>24.0</default>
+      <summary>Distance between the lines or dots of the backdrop pattern (pixels)</summary>
+    </key>
+
+    <key name="search-style" type="s">
+      <choices>
+        <choice value="pill"/>
+        <choice value="square"/>
+      </choices>
+      <default>'pill'</default>
+      <summary>Shape of the search bar</summary>
+    </key>
+
+    <key name="search-prompt" type="s">
+      <choices>
+        <choice value="none"/>
+        <choice value="chevron"/>
+      </choices>
+      <default>'none'</default>
+      <summary>Prefix inside the search bar: the magnifier or a ">" prompt</summary>
+    </key>
+
+    <!-- 1.10: performance -->
+    <key name="perf-tier" type="s">
+      <choices>
+        <choice value="auto"/>
+        <choice value="full"/>
+        <choice value="balanced"/>
+        <choice value="lite"/>
+      </choices>
+      <default>'auto'</default>
+      <summary>Quality tier: auto picks one from the machine load each time the Hive opens</summary>
+    </key>
+
+    <key name="prewarm-scene" type="b">
+      <default>true</default>
+      <summary>Build the Hive in the background after login and when apps or settings change, so that opening it is instant</summary>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,110 @@
+/* Hive Launcher — structural styling.
+ *
+ * Colours are applied from the chosen theme (Preferences → Appearance) via inline styles in hive.js,
+ * so only sizes, radii, spacing and fonts live here. The values below are fallbacks.
+ * (St shadows accept a single shadow only — multiple comma-separated shadows log warnings.)
+ */
+
+/* ---------------------------------------------------------------- backdrop */
+.hive-backdrop {
+    background-color: rgba(8, 10, 18, 0.62);
+}
+
+.hive-backdrop.no-blur {
+    background-color: rgba(8, 10, 18, 0.95);
+}
+
+.hive-canvas,
+.hive-menu-layer {
+    background-color: transparent;
+}
+
+/* ---------------------------------------------------------------- tiles (painted with Cairo) */
+.hive-icon {
+    icon-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+}
+
+.hive-label {
+    padding: 0;
+    margin: 0;
+    font-size: 9pt;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* ---------------------------------------------------------------- search bar */
+.hive-search-wrap {
+    padding: 0;
+}
+
+.hive-search {
+    width: 380px;
+    min-height: 24px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    font-size: 11pt;
+    box-shadow: 0 8px 26px 0 rgba(0, 0, 0, 0.45);
+}
+
+.hive-search-icon {
+    icon-size: 16px;
+    margin-right: 8px;
+}
+
+/* ---------------------------------------------------------------- hint line */
+.hive-hint {
+    font-size: 9pt;
+    letter-spacing: 0.5px;
+    text-align: center; /* the F1 key help spans several lines */
+}
+
+/* ---------------------------------------------------------------- context menu */
+.hive-menu {
+    min-width: 220px;
+    max-width: 320px;
+    padding: 6px;
+    spacing: 2px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 14px 38px 0 rgba(0, 0, 0, 0.55);
+}
+
+.hive-menu-head {
+    spacing: 10px;
+    padding: 6px 8px 8px 8px;
+}
+
+.hive-menu-head-icon {
+    icon-size: 28px;
+}
+
+.hive-menu-title {
+    font-weight: bold;
+    font-size: 11pt;
+    max-width: 220px;
+}
+
+.hive-menu-text {
+    padding: 4px 10px;
+    font-size: 9.5pt;
+}
+
+.hive-menu-item {
+    padding: 7px 10px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.hive-menu-row {
+    spacing: 10px;
+}
+
+.hive-menu-icon {
+    icon-size: 16px;
+}
+
+.hive-menu-sep {
+    height: 1px;
+    margin: 4px 6px;
+}
