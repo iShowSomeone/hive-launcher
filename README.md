@@ -33,7 +33,7 @@ GNOME Shell 45, 46, 47, 48, 49, 50 or 51.
 ```sh
 git clone https://github.com/iShowSomeone/hive-launcher.git
 cd hive-launcher
-./install.sh
+bash install.sh
 ```
 
 Then log out and back in (Wayland) or press <kbd>Alt</kbd>+<kbd>F2</kbd>, type `r`, <kbd>Enter</kbd> (X11), and enable it:
